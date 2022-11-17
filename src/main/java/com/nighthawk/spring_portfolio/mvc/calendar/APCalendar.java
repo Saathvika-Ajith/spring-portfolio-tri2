@@ -24,7 +24,7 @@ public class APCalendar {
      * 6 denotes Saturday. 
      * firstDayOfYear(2019) returns 2 for Tuesday.
     */
-    private static int firstDayOfYear(int year) {
+    static int firstDayOfYear(int year) {
         int lyear, rest, totaldays, day;
     
         // Count years between
@@ -121,7 +121,7 @@ public class APCalendar {
     public static void main(String[] args) {
         // Private access modifiers
         System.out.println("firstDayOfYear: " + APCalendar.firstDayOfYear(2021));
-        System.out.println("dayOfYear: " + APCalendar.dayOfYear(12, 1, 2022));
+        System.out.println("dayOfYear: " + APCalendar.dayOfYear(4, 4, 2022));
 
         // Public access modifiers
         System.out.println("isLeapYear: " + APCalendar.isLeapYear(2022));
