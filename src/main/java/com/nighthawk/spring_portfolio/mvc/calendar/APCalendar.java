@@ -9,7 +9,7 @@ public class APCalendar {
      * isLeapYear(2016) returns True
      */          
     public static boolean isLeapYear(int year) {
-        if ((year % 4 == 0)) {
+        if (((year % 4 == 0) && (year % 100!= 0)) || (year%400 == 0)) {
             return true;
         }
 
@@ -124,7 +124,7 @@ public class APCalendar {
         System.out.println("dayOfYear: " + APCalendar.dayOfYear(4, 4, 2022));
 
         // Public access modifiers
-        System.out.println("isLeapYear: " + APCalendar.isLeapYear(2022));
+        System.out.println("isLeapYear: " + APCalendar.isLeapYear(1700));
         System.out.println("numberOfLeapYears: " + APCalendar.numberOfLeapYears(2010, 2025));
         System.out.println("dayOfWeek: " + APCalendar.dayOfWeek(11, 15, 2022));
     }
