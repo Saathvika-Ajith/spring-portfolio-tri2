@@ -1,5 +1,7 @@
 package com.nighthawk.spring_portfolio.mvc.person;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -61,9 +63,18 @@ public class Person {
     @Size(min = 2, max = 30, message = "Name (2 to 30 chars)")
     private String name;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date dob;
+
+    @NonNull
+    @Size(min = 2, max = 30, message = "Gender (Male, Female, Other)")
+    private String gender;
     
+    @Column(unique=false)
+    private int height;
+
+    @Column(unique=false)
+    private int weight;
 
     /* HashMap is used to store JSON for daily "stats"
     "stats": {
@@ -79,19 +90,42 @@ public class Person {
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob) {
+    public Person(String email, String password, String name, Date dob, String gender, int height, int weight) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.dob = dob;
+        this.gender = gender;
+        this.height = height;
+        this.weight = weight;
     }
 
-    // A custom getter to return age from dob attribute
-    public int getAge() {
+    public String toString(){
+        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"gender\": " + this.gender + ", " + "\"height\": " + this.height + ", " + "\"weight\": " + this.weight + " }" );
+    }
+
+
+    public int getAge() { //getAge with the age creator 
         if (this.dob != null) {
             LocalDate birthDay = this.dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             return Period.between(birthDay, LocalDate.now()).getYears(); }
         return -1;
+    }
+
+    public String getAgeToString(){ //turns it into a string 
+        return ("{ \"name\": " + this.name + " ," + "\"age\": " + this.getAge() + " }" );
+    }
+
+
+    public static void main(String[] args) throws ParseException{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        Date myDate = sdf.parse("2006-05-23");
+
+        Person person = new Person("saathvika.ajith@gmail.com", "pwd123", "Saathvika Ajith", myDate, "Female", 61, 121 );
+        Person noArgsPerson = new Person();
+        System.out.println(noArgsPerson);
+        System.out.println(person.toString());
+        System.out.println(person.getAgeToString());
     }
 
 }
