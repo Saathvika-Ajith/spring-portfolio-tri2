@@ -121,7 +121,7 @@ public class Person {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
         Date myDate = sdf.parse("2006-05-23");
 
-        Person person = new Person("saathvika.ajith@gmail.com", "pwd123", "Saathvika Ajith", myDate, "Female", 61, 121 );
+        Person person = new Person("saathvika.ajith@gmail.com", "pwd123", "Saathvika Ajith", myDate, "Female", 61, 121);
         Person noArgsPerson = new Person();
         System.out.println(noArgsPerson);
         System.out.println(person.toString());

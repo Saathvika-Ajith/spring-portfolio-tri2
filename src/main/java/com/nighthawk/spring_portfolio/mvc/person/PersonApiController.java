@@ -71,14 +71,14 @@ public class PersonApiController {
     /*
     POST Aa record by Requesting Parameters from URI
      */
-    @PostMapping( "/post")
+    @PostMapping("/post")
     public ResponseEntity<Object> postPerson(@RequestParam("email") String email,
                                              @RequestParam("password") String password,
                                              @RequestParam("name") String name,
                                              @RequestParam("dob") String dobString,
                                              @RequestParam("gender") String gender,
-                                             @RequestParam("height") int weight,
-                                             @RequestParam("height") int height) {
+                                             @RequestParam("height") int height,
+                                             @RequestParam("weight") int weight) {
         Date dob;
         try {
             dob = new SimpleDateFormat("mm-dd-yyyy").parse(dobString);
