@@ -2,10 +2,8 @@ package com.nighthawk.spring_portfolio.mvc.lightboard;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
-import lombok.Data;
-
-@Data  // Annotations to simplify writing code (ie constructors, setters)
 public class Light {
     boolean on;
     short red;
@@ -42,12 +40,18 @@ public class Light {
     }
 
     /* Assign random colors and effects */
-    public Light() {
+    public Light(int r, int g, int b) {
         int maxColor = 255;
         int effect = 9;
-        this.red = (short) (Math.random()*(maxColor+1));
-        this.green = (short) (Math.random()*(maxColor+1));
-        this.blue = (short) (Math.random()*(maxColor+1));
+
+        //Randomly on or off
+        Random a = new Random();
+        this.on = a.nextBoolean();
+
+        // Randomly assign colors and effects
+        this.red = (short) r;
+        this.green = (short) g;
+        this.blue = (short) b;
         this.effect = (short) (Math.random()*(effect+1));
     }
 
@@ -63,9 +67,16 @@ public class Light {
          );
     }
 
+    // public void setRGB(short r, short g, short b) {
+    //     this.red = r;
+    //     this.green = g;
+    //     this.blue = b;
+    // }
+
     /* toString output as key/values */
     public String toString() {
         return( "{" + 
+            "\"on\": " + on + "," +
             "\"red\": " + red + "," +
             "\"green\": " +  green + "," + 
             "\"blue\": " + blue + "," +
@@ -73,9 +84,35 @@ public class Light {
             "}" );
     }
 
+    public boolean isOn() {
+        return this.on;
+    }
+
+    public void setOn(boolean on) {
+        this.on = on;
+    }
+
+    public short getRed() {
+        return red;
+    }
+
+    public short getGreen() {
+        return green;
+    }
+
+    public short getBlue() {
+        return blue;
+    }
+
+    public short getEffect() {
+        return effect;
+    }
+
     static public void main(String[] args) {
         // create and display LightBoard
-        Light light = new Light();
+        Light light = new Light(153,153,123);
         System.out.println(light);  // use toString() method
     }
+    
+
 }
