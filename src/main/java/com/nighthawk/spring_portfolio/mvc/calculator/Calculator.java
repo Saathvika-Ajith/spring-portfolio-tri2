@@ -76,6 +76,22 @@ public class Calculator {
         } //throws exception if error
     }
 
+    public void poundCheck() {
+        int leftParentheses = 0;
+        for (int i = 0; i < this.expression.length(); i++) {
+        //iterates through checking the characters to check for parentheses 
+            if (this.expression.charAt(i) == '(') {
+                leftParentheses++;
+            } else if (this.expression.charAt(i) == ')') {
+                rightParentheses++;
+            }
+        }
+
+        if (leftParentheses != rightParentheses) {
+            throw new RuntimeException("Check your parentheses!");
+        } //throws exception if error
+    }
+
     // Test if token is an operator
     private boolean isOperator(String token) {
         // find the token in the hash map
