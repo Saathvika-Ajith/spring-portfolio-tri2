@@ -41,18 +41,15 @@ public class Light {
 
     /* Assign random colors and effects */
     public Light(int r, int g, int b) {
-        int maxColor = 255;
         int effect = 9;
-
-        //Randomly on or off
-        Random a = new Random();
-        this.on = a.nextBoolean();
 
         // Randomly assign colors and effects
         this.red = (short) r;
         this.green = (short) g;
         this.blue = (short) b;
         this.effect = (short) (Math.random()*(effect+1));
+        Random a = new Random();
+        this.on = a.nextBoolean();
     }
 
     public String getEffectTitle() {

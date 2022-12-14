@@ -50,15 +50,5 @@ public class LightBoardAPI {
 
         return ResponseEntity.ok(json);
     }
-
-    @PostMapping("/toggleLight/{row}/{col}")
-    public ResponseEntity<JsonNode> getLight(@PathVariable int row, @PathVariable int col) throws JsonMappingException, JsonProcessingException {
-        lightBoard.toggleAll();
-
-        ObjectMapper mapper = new ObjectMapper(); 
-        json = mapper.readTree(lightBoard.toString()); 
-
-        return ResponseEntity.ok(json);
-    }
     
 }

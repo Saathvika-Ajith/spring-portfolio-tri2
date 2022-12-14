@@ -121,20 +121,6 @@ public class LightBoard {
 		return outString;
     }
 
-    public void toggleAll() {
-        for (int i = 0; i < lights.length; i++) {
-            for (int j = 0; j < lights[i].length; j++) {
-                if (lights[i][j].isOn()) {
-                    lights[i][j].setOn(false);
-                }
-                else {
-                    lights[i][j].setOn(true);
-                }
-            }
-        }
-        System.out.println("Toggling lights");
-    }
-
     public void allOn() {
         for (int i = 0; i < lights.length; i++) {
             for (int j = 0; j < lights[i].length; j++) {
